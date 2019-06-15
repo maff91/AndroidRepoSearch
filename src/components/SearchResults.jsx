@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import ResultItem from "./ResultItem";
 
-import { libIndex } from "../fakeData/libIndex";
-
 class SearchResults extends Component {
-  state = {
-    libs: libIndex.metadata
-  };
+  state = {};
 
   render() {
-    const resultItems = this.state.libs.map(packageName => (
+    const results = this.props.results;
+
+    const resultItems = results.map(packageName => (
       <ResultItem key={packageName} data={packageName} />
     ));
 
