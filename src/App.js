@@ -38,11 +38,11 @@ class App extends Component {
   }
 
   async fetchData() {
-    const response = await fetch("http://localhost:3000/fakeData.json");
+    const response = await fetch("/fakeData.json");
     const json = await response.json();
 
     this.setState({ allData: json, searchResults: json });
-    // const response = await fetch("http://localhost:3000/libIndex.xml");
+    // const response = await fetch("/libIndex.xml");
     // const xmlData = await response.text();
     // const parser = new DOMParser().parseFromString(xmlData, "application/xml");
     // const libList = [];
