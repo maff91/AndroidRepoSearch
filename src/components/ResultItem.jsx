@@ -2,7 +2,13 @@ import React, { Component } from "react";
 
 class ResultItem extends Component {
   render() {
-    return <li>{this.props.data}</li>;
+    const lib = this.props.data;
+    const latestStabeVersion = lib.versions[lib.latestMostStable];
+    return (
+      <li>
+        {lib.name} -> {latestStabeVersion}
+      </li>
+    );
   }
 }
 
