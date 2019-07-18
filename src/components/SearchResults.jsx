@@ -6,9 +6,14 @@ class SearchResults extends Component {
 
   render() {
     console.log(this.props.results.length);
-    const results = this.props.results;
+    const results = this.props.results.slice(0, 50);
     const resultItems = results.map(lib => <ResultItem key={lib.name} data={lib} />);
-    return <ul>{resultItems}</ul>;
+
+    return (
+      <div class="content-container">
+        <ul class="result-list">{resultItems}</ul>
+      </div>
+    );
   }
 }
 
