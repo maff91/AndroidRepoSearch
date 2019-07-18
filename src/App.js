@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./App.scss";
 
 import SearchResults from "./components/SearchResults";
 import Header from "./components/Header";
@@ -31,7 +31,9 @@ class App extends Component {
     return (
       <React.Fragment>
         <Header onSearch={this.onSearch} />
-        <SearchResults results={this.state.searchResults} />
+        <section id="content">
+          <SearchResults results={this.state.searchResults} />
+        </section>
         <Footer />
       </React.Fragment>
     );

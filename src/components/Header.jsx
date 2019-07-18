@@ -13,14 +13,13 @@ class Footer extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Google Android Repository</h1>
-        <input
-          type="text"
-          placeholder="e.g. paging"
-          onChange={this.onSearchChanged}
-        />
-      </div>
+      <header class="has-text-centered">
+        <h1>Android Repository Search</h1>
+        <h2>
+          Source: <a href="https://dl.google.com/dl/android/maven2/index.html">Google's Maven Repository</a>
+        </h2>
+        <input type="text" placeholder="e.g. paging" onChange={this.onSearchChanged} />
+      </header>
     );
   }
 }
