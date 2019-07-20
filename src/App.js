@@ -32,12 +32,23 @@ class App extends Component {
       <React.Fragment>
         <Header onSearch={this.onSearch} />
         <section id="content">
-          <SearchResults results={this.state.searchResults} />
+          <SearchResults results={this.state.searchResults} onCopyClicked={this.onCopyClicked} />
         </section>
         <Footer />
+        <input type="text" id="fake-copy-input" />
       </React.Fragment>
     );
   }
+
+  onCopyClicked = lib => {
+    var tempInput = document.createElement("input");
+    tempInput.style = "position: absolute; left: -1000px; top: -1000px";
+    tempInput.value = lib.name;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+  };
 
   async fetchData() {
     const response = await fetch("/fakeData.json");

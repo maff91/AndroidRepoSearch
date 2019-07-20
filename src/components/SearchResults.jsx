@@ -7,11 +7,13 @@ class SearchResults extends Component {
   render() {
     console.log(this.props.results.length);
     const results = this.props.results.slice(0, 50);
-    const resultItems = results.map(lib => <ResultItem key={lib.name} data={lib} />);
+    const resultItems = results.map(lib => (
+      <ResultItem key={lib.name} data={lib} onCopyClicked={this.props.onCopyClicked} />
+    ));
 
     return (
-      <div class="content-container">
-        <ul class="result-list">{resultItems}</ul>
+      <div className="content-container">
+        <ul className="result-list">{resultItems}</ul>
       </div>
     );
   }

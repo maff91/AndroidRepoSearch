@@ -6,14 +6,17 @@ class ResultItem extends Component {
     const latestStableVersion = lib.versions[lib.latestMostStable];
     return (
       <li>
-        <div class="lib-text">
-          <span class="text-code-comment">"{lib.name}:</span>
-          <span class="text-code-purple">{latestStableVersion}</span>
-          <span class="text-code-comment">"</span>
+        <div className="lib-text">
+          <span className="text-code-comment">"{lib.name}:</span>
+          <span className="text-code-purple">{latestStableVersion}</span>
+          <span className="text-code-comment">"</span>
         </div>
 
-        <div class="copy-container">
-          <span class="btn-link">Copy</span> / <span class="btn-link">V</span>
+        <div className="copy-container">
+          <span className="btn-link" onClick={() => this.props.onCopyClicked(lib)}>
+            Copy
+          </span>
+          {/* / <span className="btn-link">V</span> */}
         </div>
       </li>
     );

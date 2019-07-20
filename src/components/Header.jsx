@@ -13,7 +13,7 @@ class Footer extends Component {
 
   render() {
     return (
-      <header class="has-text-centered">
+      <header className="has-text-centered">
         <h1>Android Repository Search</h1>
         <h2>
           Source: <a href="https://dl.google.com/dl/android/maven2/index.html">Google's Maven Repository</a>

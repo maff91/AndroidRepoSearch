@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Footer extends Component {
   render() {
     return (
-      <footer class="has-text-centered">
+      <footer className="has-text-centered">
         <p>
           Made by{" "}
           <a href="https://www.linkedin.com/in/mshtutman/" target="_blank" rel="noopener noreferrer">
