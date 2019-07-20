@@ -22,7 +22,7 @@ class App extends Component {
   onSearch = searchString => {
     if (searchString) {
       this.setState({
-        searchResults: this.state.allData.filter(lib => lib.name.includes(searchString.toLowerCase())),
+        searchResults: this.state.allData.filter(lib => lib.fullName.includes(searchString.toLowerCase())),
         searchString: searchString
       });
     } else {
@@ -54,11 +54,11 @@ class App extends Component {
     );
   }
 
-  onCopyClicked = lib => {
+  onCopyClicked = (lib, version) => {
     // Copy to clipboard.
     var tempInput = document.createElement("input");
     tempInput.style = "position: absolute; left: -1000px; top: -1000px";
-    tempInput.value = lib.name;
+    tempInput.value = '"' + lib.fullName + ":" + version + '"';
     document.body.appendChild(tempInput);
     tempInput.select();
     document.execCommand("copy");
@@ -98,7 +98,7 @@ class App extends Component {
       const libObj = {};
       libObj.name = node.nodeName;
       libObj.group = groupPackage;
-      libObj.fullName = groupPackage + "." + libObj.name;
+      libObj.fullName = groupPackage + ":" + libObj.name;
       libObj.versions = node
         .getAttribute("versions")
         .split(",")

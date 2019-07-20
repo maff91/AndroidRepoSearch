@@ -21,7 +21,7 @@ class SearchResults extends Component {
       return <p className="empty-view">No matches found</p>;
     } else {
       const resultItems = results.map(lib => (
-        <ResultItem key={lib.name} data={lib} onCopyClicked={this.props.onCopyClicked} />
+        <ResultItem key={lib.fullName} data={lib} onCopyClicked={this.props.onCopyClicked} />
       ));
 
       return (

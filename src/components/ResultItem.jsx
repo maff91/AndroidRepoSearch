@@ -14,7 +14,7 @@ class ResultItem extends Component {
         </div>
 
         <div className="copy-container">
-          <span className="btn-link" onClick={() => this.props.onCopyClicked(lib)}>
+          <span className="btn-link" onClick={() => this.props.onCopyClicked(lib, latestStableVersion)}>
             Copy
           </span>
           {/* / <span className="btn-link">V</span> */}
