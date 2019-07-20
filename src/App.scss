@@ -10,11 +10,8 @@ $panel-border-color: #717171;
 $panel-divider-color: #414141;
 
 $link-color: #267af7;
-$text-color-primary: #c2c2c2;
-
-$text-color-lib-package: #c2c2c2;
-$text-color-lib-name: #c2c2c2;
-$text-color-lib-version: #c2c2c2;
+$text-color-primary: #d2d2d2;
+$text-color-secondary: #b2b2b2;
 
 // Body.
 
@@ -71,6 +68,7 @@ footer {
 
 .content-container {
   max-width: 800px;
+  height: 100%;
   margin: 0 auto;
 }
 
@@ -194,6 +192,20 @@ header input {
 }
 
 // Other.
+
+.more-results-available {
+  padding: 1em 0.5em;
+  text-align: center !important;
+  color: $text-color-secondary;
+}
+
+.empty-view {
+  position: relative;
+  float: left;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 #fake-copy-input {
   display: none;

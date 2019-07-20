@@ -5,7 +5,7 @@ import SearchResults from "./components/SearchResults";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-import { ToastContainer, toast, Zoom, Slide } from "react-toastify";
+import { ToastContainer, toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 class App extends Component {
