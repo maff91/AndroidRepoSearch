@@ -76,7 +76,7 @@ class App extends Component {
     // const json = await response.json();
     // this.setState({ allData: json, searchResults: json });
 
-    const response = await fetch("https://dl.google.com/dl/android/maven2/master-index.xml");
+    const response = await fetch("/googlemaven/master-index.xml");
     const xmlData = await response.text();
     const parser = new DOMParser().parseFromString(xmlData, "application/xml");
 
@@ -88,7 +88,7 @@ class App extends Component {
 
   async getRepositoryGroup(groupPackage) {
     const libUrl = groupPackage.split(".").join("/");
-    const libRequest = await fetch(`https://dl.google.com/dl/android/maven2/${libUrl}/group-index.xml`);
+    const libRequest = await fetch(`/googlemaven/${libUrl}/group-index.xml`);
     const libXml = await libRequest.text();
     const libParser = new DOMParser().parseFromString(libXml, "application/xml");
 
