@@ -34,7 +34,6 @@ class SearchResults extends Component {
   };
 
   renderMoreItems = hiddenItemsCount => {
-    console.log(hiddenItemsCount);
     if (hiddenItemsCount > 0) {
       return <p className="more-results-available">{hiddenItemsCount} more results</p>;
     } else {
