@@ -12,8 +12,7 @@ class App extends Component {
   state = {
     allData: [],
     searchResults: [],
-    isLoading: true,
-    isError: false
+    searchString: ""
   };
 
   componentDidMount() {
@@ -23,10 +22,11 @@ class App extends Component {
   onSearch = searchString => {
     if (searchString) {
       this.setState({
-        searchResults: this.state.allData.filter(lib => lib.name.includes(searchString.toLowerCase()))
+        searchResults: this.state.allData.filter(lib => lib.name.includes(searchString.toLowerCase())),
+        searchString: searchString
       });
     } else {
-      this.setState({ searchResults: this.state.allData });
+      this.setState({ searchString: "", searchResults: this.state.allData });
     }
   };
 
@@ -72,17 +72,21 @@ class App extends Component {
   };
 
   async fetchData() {
-    const response = await fetch("/fakeData.json");
-    const json = await response.json();
+    // const response = await fetch("/fakeData.json");
+    // const json = await response.json();
+    // this.setState({ allData: json, searchResults: json });
 
-    this.setState({ allData: json, searchResults: json });
-    // const response = await fetch("/libIndex.xml");
-    // const xmlData = await response.text();
-    // const parser = new DOMParser().parseFromString(xmlData, "application/xml");
-    // const libList = [];
+    const response = await fetch("https://dl.google.com/dl/android/maven2/master-index.xml");
+    const xmlData = await response.text();
+    const parser = new DOMParser().parseFromString(xmlData, "application/xml");
+
+    for (let group of parser.getRootNode().firstChild.children) {
+      const groupName = group.nodeName;
+      this.getRepositoryGroup(groupName);
+    }
   }
 
-  async parseLib(groupPackage) {
+  async getRepositoryGroup(groupPackage) {
     const libUrl = groupPackage.split(".").join("/");
     const libRequest = await fetch(`https://dl.google.com/dl/android/maven2/${libUrl}/group-index.xml`);
     const libXml = await libRequest.text();
@@ -92,7 +96,9 @@ class App extends Component {
 
     for (let node of libParser.getRootNode().firstChild.children) {
       const libObj = {};
-      libObj.name = groupPackage + "." + node.nodeName;
+      libObj.name = node.nodeName;
+      libObj.group = groupPackage;
+      libObj.fullName = groupPackage + "." + libObj.name;
       libObj.versions = node
         .getAttribute("versions")
         .split(",")
@@ -112,7 +118,10 @@ class App extends Component {
       subLibs.push(libObj);
     }
 
-    return subLibs;
+    this.setState({ allData: this.state.allData.concat(subLibs) });
+
+    // Refresh search if needed.
+    this.onSearch(this.state.searchString);
   }
 }
 

@@ -7,7 +7,8 @@ class ResultItem extends Component {
     return (
       <li>
         <div className="lib-text">
-          <span className="text-code-comment">"{lib.name}:</span>
+          <span className="text-code-comment">"{lib.group}:</span>
+          <span className="text-code-orange">{lib.name}:</span>
           <span className="text-code-purple">{latestStableVersion}</span>
           <span className="text-code-comment">"</span>
         </div>
