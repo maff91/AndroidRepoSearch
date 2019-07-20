@@ -5,6 +5,9 @@ import SearchResults from "./components/SearchResults";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
+import { ToastContainer, toast, Zoom, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 class App extends Component {
   state = {
     allData: [],
@@ -35,12 +38,24 @@ class App extends Component {
           <SearchResults results={this.state.searchResults} onCopyClicked={this.onCopyClicked} />
         </section>
         <Footer />
+
+        <ToastContainer
+          position={toast.POSITION.TOP_CENTER}
+          autoClose={1500}
+          transition={Slide}
+          hideProgressBar={true}
+          closeButton={false}
+          toastClassName="notification-body"
+          bodyClassName="notification-body"
+        />
+
         <input type="text" id="fake-copy-input" />
       </React.Fragment>
     );
   }
 
   onCopyClicked = lib => {
+    // Copy to clipboard.
     var tempInput = document.createElement("input");
     tempInput.style = "position: absolute; left: -1000px; top: -1000px";
     tempInput.value = lib.name;
@@ -48,6 +63,12 @@ class App extends Component {
     tempInput.select();
     document.execCommand("copy");
     document.body.removeChild(tempInput);
+
+    // Show toast, prevent duplication.
+    const toastId = "copyToast";
+    if (!toast.isActive(toastId)) {
+      toast("Copied to Clipboard", { toastId: toastId });
+    }
   };
 
   async fetchData() {

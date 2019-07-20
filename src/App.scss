@@ -187,6 +187,12 @@ header input {
   }
 }
 
+.notification-body {
+  background: $background !important;
+  color: $text-color-primary;
+  text-align: center;
+}
+
 // Other.
 
 #fake-copy-input {
