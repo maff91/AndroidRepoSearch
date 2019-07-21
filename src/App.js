@@ -48,8 +48,6 @@ class App extends Component {
           toastClassName="notification-body"
           bodyClassName="notification-body"
         />
-
-        <input type="text" id="fake-copy-input" />
       </React.Fragment>
     );
   }
