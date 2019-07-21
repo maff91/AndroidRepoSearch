@@ -74,7 +74,7 @@ class App extends Component {
     // const json = await response.json();
     // this.setState({ allData: json, searchResults: json });
 
-    const response = await fetch("/googlemaven/master-index.xml");
+    const response = await fetch("/googlemaven/master-index.xml", { headers: { Accept: "application/xml" } });
     const xmlData = await response.text();
     const parser = new DOMParser().parseFromString(xmlData, "application/xml");
 
