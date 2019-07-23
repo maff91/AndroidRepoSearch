@@ -28,6 +28,7 @@ body {
 ul,
 p {
   margin: 0;
+  padding: 0;
 }
 
 // Main grid.
@@ -99,8 +100,18 @@ h2 {
 .text-code-orange {
   color: #cb772f;
 }
+
 .text-code-purple {
   color: #9876aa;
+}
+
+.text-version-stable {
+  color: #9876aa;
+  font-weight: bold;
+}
+
+.text-version-not-stable {
+  color: #9876aaa8;
 }
 
 .result-list {
@@ -108,7 +119,7 @@ h2 {
   padding: 0.5em 1em;
 }
 
-.result-list li {
+.result-list > li {
   padding: 0.5em 0.5em;
   margin: 0.25em 0;
   background: none;
@@ -116,7 +127,7 @@ h2 {
   overflow: hidden;
 }
 
-.result-list li:last-child {
+.result-list > li:last-child {
   border: none;
 }
 
@@ -126,6 +137,7 @@ a:active,
 .btn-link {
   color: $link-color;
   text-decoration: underline;
+  margin-left: 0.25em;
 }
 
 a:hover,
@@ -138,6 +150,14 @@ a:hover,
   cursor: pointer;
   padding: 0.25em;
   border-radius: 4px;
+}
+
+// Prevent double-click selection.
+.btn-link:active {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -ms-user-select: none;
 }
 
 input {
@@ -191,7 +211,34 @@ header input {
   text-align: center;
 }
 
+.version-picker {
+  margin-top: 0.75em;
+  list-style: none;
+  overflow: hidden;
+}
+
+.version-chip {
+  float: left;
+  display: block;
+  border-radius: 6px;
+  padding: 0.25em;
+  cursor: pointer;
+  background: none;
+}
+
+.version-chip:hover {
+  background: $panel-backgound;
+}
+
+.version-chip:active {
+  background: none;
+}
+
 // Other.
+
+.clear-both {
+  clear: both;
+}
 
 .more-results-available {
   padding: 1em 0.5em;
