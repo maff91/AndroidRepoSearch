@@ -5,7 +5,7 @@
   "dependencies": {
     "http-proxy-middleware": "^0.19.1",
     "ncp": "^2.0.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "normalize.css": "^8.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
